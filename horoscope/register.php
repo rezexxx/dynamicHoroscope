@@ -47,7 +47,7 @@ mysqli_close($conn);
 
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" id="username" class="form-control" name="username" required>
+                <input type="text" id="username" class="form-control" name="username" required pattern="^[a-zA-Z0-9-_]*$">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
