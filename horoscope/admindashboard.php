@@ -64,45 +64,53 @@ $zodiac_result = mysqli_query($conn, "SELECT * FROM zodiac ORDER BY id_zodiac AS
     </head>
     <body>
         <h1>Administrator Dashboard</h1>
+        <table width='100%' border=1 class="table">
+            <td>
+                <table width='40%' border=2 class="table">
+                    <h1>Users</h1>
+                    <tr>
+                        <th>Username</th> <th>Lastname</th> <th>Firstname</th> <th>Birthday</th> <th>Gender</th> <th>Operations</th>
+                    </tr>
+                    <?php  
+                        while($user_data = mysqli_fetch_array($result)) {
+                            echo "<tr>";
+                            echo "<td>".$user_data['username']."</td>";
+                            echo "<td>".$user_data['last_name']."</td>";
+                            echo "<td>".$user_data['first_name']."</td>";
+                            echo "<td>".convertNumtoMonth($user_data['month'])." ".$user_data['day'].", ".$user_data['year']."</td>";    
+                            echo "<td>".ucfirst($user_data['gender'])."</td>";    
+                            echo "<td><a href='edit-user.php?id=$user_data[id]'><button class='btn btn-primary'>Edit</button></a><a href='delete-user.php?id=$user_data[id]'><button class='btn btn-primary'>Delete</button></a></td>";
+                        }
+                        echo '';
+                    ?>
+                </table>
+                <a href="add-users.php" class="btn btn-primary">Add New User</a>
+            </td>
+            <td>
+                <table width='40%' border=2 class="table">
+                    <h1>Zodiac Signs</h1>
+                    <tr>
+                        <th>Zodiac Sign Name</th> <th>Description</th> <th>Daily Horoscope</th><th>Month Range</th> <th>Image Path</th><th>Operations</th>
+                    </tr>
+                    <?php  
+                        while($user_data = mysqli_fetch_array($zodiac_result)) {
+                            echo "<tr>";
+                            echo "<td>".$user_data['sign_name']."</td>";
+                            echo "<td>".$user_data['description']."</td>";
+                            echo "<td>".$user_data['daily_horoscope']."</td>";
+                            echo "<td>".convertNumtoMonth($user_data['month_min'])." ".$user_data['day_min']." - ".convertNumtoMonth($user_data['month_max'])." ".$user_data['day_max']."</td>";    
+                            echo "<td>".$user_data['image_path']."</td>";    
+                            echo "<td><a href='edit-zodiac.php?id=$user_data[id_zodiac]'><button class='btn btn-primary'>Edit</button></a> <a href='delete-zodiac.php?id=$user_data[id_zodiac]'><button class='btn btn-primary'>Delete</button></a></td>";
+                        }
+                    ?>
+                </table>
+                <a href="add-zodiac.php" class="btn btn-primary">Add New Zodiac</a><br><br>
+            </td>
+        </table>
         
-        <table width='40%' border=2 class="table">
-            <h1>Users</h1>
-            <tr>
-                <th>Firstname</th> <th>Lastname</th> <th>Username</th> <th>Birthday</th> <th>Gender</th> <th>Operations</th>
-            </tr>
-            <?php  
-                while($user_data = mysqli_fetch_array($result)) {
-                    echo "<tr>";
-                    echo "<td>".$user_data['first_name']."</td>";
-                    echo "<td>".$user_data['last_name']."</td>";
-                    echo "<td>".$user_data['username']."</td>";
-                    echo "<td>".convertNumtoMonth($user_data['month'])." ".$user_data['day'].", ".$user_data['year']."</td>";    
-                    echo "<td>".ucfirst($user_data['gender'])."</td>";    
-                    echo "<td><a href='edit-user.php?id=$user_data[id]'><button class='btn btn-primary'>Edit</button></a> <a href='delete-user.php?id=$user_data[id]'><button class='btn btn-primary'>Delete</button></a></td>";
-                }
-                echo '';
-            ?>
-        </table>
-        <a href="add-users.php" class="btn btn-primary">Add New User</a>
-        <table width='40%' border=2 class="table">
-            <h1>Zodiac Signs</h1>
-            <tr>
-                <th>Zodiac Sign Name</th> <th>Description</th> <th>Daily Horoscope</th> <th>Monthly Horoscope</th> <th>Month Range</th> <th>Image Path</th>
-            </tr>
-            <?php  
-                while($user_data = mysqli_fetch_array($zodiac_result)) {
-                    echo "<tr>";
-                    echo "<td>".$user_data['sign_name']."</td>";
-                    echo "<td>".$user_data['description']."</td>";
-                    echo "<td>".$user_data['daily_horoscope']."</td>";
-                    echo "<td>".$user_data['monthly_horoscope']."</td>";
-                    echo "<td>".convertNumtoMonth($user_data['month_min'])." ".$user_data['day_min']." - ".convertNumtoMonth($user_data['month_max'])." ".$user_data['day_max']."</td>";    
-                    echo "<td>".$user_data['image_path']."</td>";    
-                    echo "<td><a href='edit-zodiac.php?id=$user_data[id_zodiac]'><button class='btn btn-primary'>Edit</button></a> <a href='delete-zodiac.php?id=$user_data[id_zodiac]'><button class='btn btn-primary'>Delete</button></a></td>";
-                }
-            ?>
-        </table>
-        <a href="add-zodiac.php" class="btn btn-primary">Add New Zodiac</a><br><br>
+        
+        
+        
         <a href="logout.php" class="btn btn-primary">Log out</a>
     </body>
 </html>
