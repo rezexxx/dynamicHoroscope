@@ -1,0 +1,76 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffd700; /* Dark yellow */
+    color: #D2BD96;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    height: 100vh;
+    padding-top: 50px; /* Add spacing from the top */
+}
+
+h1 {
+    text-align: center;
+    color: #ffd700; /* Gold */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Pop-out effect */
+}
+
+form {
+    background-color: #00695c; /* Slightly lighter emerald green */
+    border-radius: 15px;
+    padding: 30px 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Pop-out effect */
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-label {
+    color: #ffd700; /* Gold */
+    font-weight: bold;
+}
+
+.form-control {
+    border: 1px solid #ffd700; /* Gold border */
+    border-radius: 5px;
+    background-color: #004d40; /* Emerald green background */
+    color: #fff;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px #ffd700; /* Gold glow */
+    border-color: #ffd700;
+}
+
+.form-check-label {
+    color: #ffd700;
+}
+
+.btn-primary {
+    background-color: #ffd700; /* Gold button */
+    color: #004d40; /* Emerald green text */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e6be00; /* Darker gold */
+    color: #00332e; /* Darker emerald green */
+    transform: scale(1.05);
+}
+
+.mb-3-gender {
+    margin-bottom: 20px;
+}
+
+.form-check-input:checked {
+    background-color: #ffd700; /* Gold */
+    border-color: #ffd700;
+}
